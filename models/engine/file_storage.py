@@ -33,4 +33,9 @@ class FileStorage:
                 """
                 deserialzes instances got from json file
                 """
+             try:
+            with open(FileStorage.__file_path, 'r') as f:
+                dictofobjs = json.loads(f.read())
 
+                   except FileNotFoundError:
+            pass

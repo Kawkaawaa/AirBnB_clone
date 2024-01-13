@@ -1,8 +1,5 @@
 
-#!/usr/bin/python3
-
 import json
-from models
 
 
 class FileStorage:
@@ -13,29 +10,53 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        return FileStorage.__objetcs
+        """
+        Returns the dictionary of all serialized objects.
+        """
+        return self.__objects
 
     def new(self, obj):
-        key = type(obj).__name__ + '.' + obj.id
-        FileStorage.__[key] = obj
+        """
+        Adds a new object to the storage.
 
-        def save(self):
-            """
-            serializes FileStorage.__objects
-            """
-            with open(FileStorage.__file_path, 'w+') as f:
-                dictofobjs = {}
-                for key, value in FileStorage.__objects.items():
-                    dictofobj[key] = value.to_dict()
-                json.dump(dictofobjs, f)
+        Args:
+            obj: The object to be added.
 
-            def reload(self):
-                """
-                deserialzes instances got from json file
-                """
-             try:
-            with open(FileStorage.__file_path, 'r') as f:
-                dictofobjs = json.loads(f.read())
+        Returns:
+            None
+        """
+        key = self.__class__.__name__ + "." + str(obj.id)
+        self.__objects[key] = obj
 
-                   except FileNotFoundError:
+    def save(self):
+        """
+        Serializes objects and saves them to the JSON file.
+        """
+        json_obj = {}
+        for key, value in self.__objects.items():
+            if isinstance(value, dict):
+                # Value is already a dictionary, use it directly
+                json_obj[key] = value
+            else:
+                try:
+                    # Value is assumed to be an instance of BaseModel
+                    json_obj[key] = value.to_dict()
+                except Exception as e:
+                    print(f"Error while converting {value} to dict: {e}")
+
+        with open(self.__file_path, 'w') as f:
+            json.dump(json_obj, f)
+
+    def reload(self):
+        """
+        Deserializes objects from the JSON file.
+        """
+        try:
+            with open(self.__file_path, 'r') as f:
+                file_content = f.read().strip()
+                if file_content:
+                    dict_of_objs = json.loads(file_content)
+                    self.__objects = dict_of_objs
+                # Additional logic to reconstruct objects from the dictionary
+        except FileNotFoundError:
             pass

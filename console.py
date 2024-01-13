@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 import cmd
+from modelsbase_model import BaseModel
+from models.__init__ import storge
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'

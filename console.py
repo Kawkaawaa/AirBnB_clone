@@ -4,9 +4,9 @@ Module Console
 """
 import cmd
 import shlex
+import sys
 import models
 from models.base_model import BaseModel
-import sys
 
 
 class HBNBCommand(cmd.Cmd):

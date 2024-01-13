@@ -3,13 +3,13 @@
 Module Console
 """
 import cmd
-from modelsbase_model import BaseModel
-from models.__init__ import storge
+from models.base_model import BaseModel
+from models import storage
 from models.user import User
 from models.base_model import BaseModel
 
 
-class HbnbCommand(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """Hbnb Command Line Interface"""
 
     prompt = '(hbnb)'
@@ -30,14 +30,10 @@ class HbnbCommand(cmd.Cmd):
         """emptyline and enter does nothing anymore.
         """
         pass
-
-if __name__ == "__main__":
-
-    HBNBCommand().cmdloop()
-
-     def do_create(self, line):
+    
+    def do_create(self, line):
         """Creates a new instance of a given class, saves it \
-(to the JSON file) and prints the id."""
+        (to the JSON file) and prints the id."""
         if line == '':
             print('** class name missing **')
         elif line not in HBNBCommand.classes:
@@ -45,7 +41,7 @@ if __name__ == "__main__":
 
     def do_show(self, line):
         """Prints the string representation of an instance based \
-on the class name and id."""
+        on the class name and id."""
         args = line.split()
         if line == '':
             print('** class name missing **')
@@ -63,7 +59,7 @@ on the class name and id."""
                 except KeyError:
                     print('** no instance found **')
 
-     def do_destroy(self, line):
+    def do_destroy(self, line):
         """
         Deletes an instance based on the class name
         and id (save the change into the JSON file)
@@ -85,7 +81,7 @@ on the class name and id."""
                     storage.save()
                 except KeyError:
                     print('** no instance found **')
-     def do_all(self, line):
+    def do_all(self, line):
         """
         Prints all string representation of all instances
         based or not on the class name. Ex: $ all BaseModel or $ all
@@ -96,3 +92,6 @@ on the class name and id."""
             if args[0] not in HBNBCommand.classes:
                 print('** class doesn\'t exist **')
                 return
+
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()

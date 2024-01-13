@@ -13,7 +13,7 @@ class HBNBCommand(cmd.Cmd):
     """Hbnb Command Line Interface"""
 
     prompt = '(hbnb)'
-    classes = {'BaseModel': BaseModel}
+    classes = {'BaseModel': BaseModel, 'User': User}
 
     def do_quit(self, line):
         """Quit command to exit the program.

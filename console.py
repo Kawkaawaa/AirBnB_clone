@@ -11,7 +11,7 @@ class HbnbCommand(cmd.Cmd):
 
     prompt = '(hbnb)'
     classes = {'BaseModel': BaseModel}
-
+    
     def do_quit(self, line):
         """Quit command to exit the program.
         """
@@ -22,7 +22,11 @@ class HbnbCommand(cmd.Cmd):
         """
         print("")
         return True
-
+    
+    def emptyline(self):
+        """emptyline and enter does nothing anymore.
+        """
+        pass
 
 if __name__ == "__main__":
     HbnbCommand().cmdloop()

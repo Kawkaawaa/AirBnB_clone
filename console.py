@@ -3,9 +3,6 @@
 Module Console
 """
 import cmd
-#import shlex
-#import sys
-#import models
 from models.base_model import BaseModel
 
 
@@ -22,6 +19,11 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """ Quit command  to exit the program """
         return True
+
+    def do_empyline(self):
+        """ Defines Empty option"""
+        pass
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

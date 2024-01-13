@@ -1,22 +1,38 @@
 #!/usr/bin/python3
+"""
+Module Console
+"""
 import cmd
 from modelsbase_model import BaseModel
 from models.__init__ import storge
 from models.user import User
+from models.base_model import BaseModel
 
-class HBNBCommand(cmd.Cmd):
+
+class HbnbCommand(cmd.Cmd):
+    """Hbnb Command Line Interface"""
+
     prompt = '(hbnb)'
-    def do_quit(self,arg):
-        """ Quit command  to exit the program """
-        return True
-    def do_EOF(self,arg):
-        """ Quit command  to exit the program """
+    classes = {'BaseModel': BaseModel}
+    
+    def do_quit(self, line):
+        """Quit command to exit the program.
+        """
         return True
 
-    def do_empyline(self):
+    def do_EOF(self, line):
+        """(Ctrl+D): Exit the program.
+        """
+        print("")
+        return True
+    
+    def emptyline(self):
+        """emptyline and enter does nothing anymore.
+        """
         pass
 
 if __name__ == "__main__":
+
     HBNBCommand().cmdloop()
 
      def do_create(self, line):

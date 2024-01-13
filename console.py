@@ -20,10 +20,6 @@ class HBNBCommand(cmd.Cmd):
         """ Quit command  to exit the program """
         return True
 
-    def do_empyline(self):
-        """ Defines Empty option"""
-        pass
-
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

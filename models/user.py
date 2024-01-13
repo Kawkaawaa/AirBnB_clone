@@ -3,7 +3,9 @@
 Class User that inherits from BaseModel
 """
 
+
 from models.base_model import BaseModel
+
 
 class user(BaseModel):
     """

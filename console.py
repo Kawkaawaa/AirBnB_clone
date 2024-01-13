@@ -14,7 +14,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb)'
     classes = {'BaseModel': BaseModel}
-    
+
     def do_quit(self, line):
         """Quit command to exit the program.
         """
@@ -25,12 +25,12 @@ class HBNBCommand(cmd.Cmd):
         """
         print("")
         return True
-    
+
     def emptyline(self):
         """emptyline and enter does nothing anymore.
         """
         pass
-    
+
     def do_create(self, line):
         """Creates a new instance of a given class, saves it \
         (to the JSON file) and prints the id."""
@@ -81,6 +81,7 @@ class HBNBCommand(cmd.Cmd):
                     storage.save()
                 except KeyError:
                     print('** no instance found **')
+
     def do_all(self, line):
         """
         Prints all string representation of all instances
@@ -92,6 +93,7 @@ class HBNBCommand(cmd.Cmd):
             if args[0] not in HBNBCommand.classes:
                 print('** class doesn\'t exist **')
                 return
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

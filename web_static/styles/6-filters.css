@@ -32,6 +32,7 @@
     height: 100%;
     width: 25%;
     margin-left: 50px;
+    cursor: pointer;
 }
 
 .filters .locations {
@@ -49,3 +50,34 @@
     margin-top: 0px;
 }
 
+.filters .popover {
+    display: none;
+    background-color: #FAFAFA;
+    margin-left: -50px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    list-style-type: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    z-index: 10;
+    position: relative;
+}
+
+.filters h2 {
+    margin: 0px;
+    font-size: 16px;
+    margin-left: -13px;
+}
+
+.filters .locations li:nth-child(4) {
+    margin-top: 20px;
+}
+
+.filters li {
+    cursor: pointer;
+}
+
+.filters .locations:hover .popover,
+.filters .amenities:hover .popover {
+    display: block;
+}

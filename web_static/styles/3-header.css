@@ -6,3 +6,12 @@ header {
 	align-items: center;
 	padding-left: 20px;
 }
+
+/* Header logo style */
+header .logo{
+    height: inherit;
+    width: inherit;
+    background: url("../images/logo.png") no-repeat;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+}
